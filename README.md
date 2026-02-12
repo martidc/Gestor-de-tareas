@@ -58,7 +58,7 @@ python app.py
 # Notas
 - Las tareas se almacenan en la memoria, por lo que se reinician al cerrar el servidor.
 
-# Posibles mejoras futuras
+# Posibles mejoras a futuro
 - Guardar las tareas en una base de datos
 - Agregar filtros de estado (pendiente/finalizado)
 - Agregar filtros de urgencia (Urgente/para el día/para la semana)
