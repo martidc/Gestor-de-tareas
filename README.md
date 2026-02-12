@@ -60,9 +60,10 @@ python app.py
 
 # Posibles mejoras a futuro
 - Guardar las tareas en una base de datos
-- Agregar filtros de estado (pendiente/finalizado)
+- Agregar filtros de estado (pendiente/en progreso/finalizado)
 - Agregar filtros de urgencia (Urgente/para el día/para la semana)
 - Mejoras de accesibilidad y diseño
+- Subdivisión de tareas
 
 # Autora
 Martina de la Camara
