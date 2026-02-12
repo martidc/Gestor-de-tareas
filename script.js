@@ -18,7 +18,7 @@ async function cargarTareas() {
             listaTareas.innerHTML = `
                 <div class="empty-state">
                     <img src="https://media.tenor.com/2X6auNAZN8oAAAAj/psyduckpc2.gif" alt="Sin tareas" class="empty-gif">
-                    <p>Todavía no hay tareas. ¡Añade una!</p>
+                    <p>Todavía no hay tareas. Agregá una!</p>
                 </div>`;
             return;
         }
@@ -50,7 +50,7 @@ document.getElementById('formulario-tarea').addEventListener('submit', async (e)
     const descripcion = document.getElementById('descripcion').value.trim();
 
     if (!titulo) {
-        mostrarAlert('¡Escribe un título!', 'warning');
+        mostrarAlert('Escribí un título!', 'warning');
         return;
     }
 
@@ -64,11 +64,11 @@ document.getElementById('formulario-tarea').addEventListener('submit', async (e)
         if (response.ok) {
             document.getElementById('titulo').value = '';
             document.getElementById('descripcion').value = '';
-            mostrarAlert('Tarea añadida con éxito', 'success');
+            mostrarAlert('Tarea añadida con éxito :)', 'success');
             cargarTareas();
         }
     } catch (error) {
-        mostrarAlert('No se pudo guardar la tarea', 'danger');
+        mostrarAlert('No se pudo guardar la tarea :(', 'danger');
     }
 });
 
