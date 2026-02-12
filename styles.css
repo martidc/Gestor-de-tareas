@@ -117,7 +117,7 @@ textarea {
 }
 
 .btn-secondary:hover {
-    background: #d83e50;
+    background: #575f5f;
     transform: scale(1.05);
 }
 
@@ -273,4 +273,5 @@ input[type="checkbox"] {
         grid-template-columns: 1fr;
     }
 }
+
 
