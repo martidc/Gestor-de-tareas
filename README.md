@@ -3,11 +3,15 @@ Aplicación web full stack para la gestión de tareas, desarrollada con Flask en
 
 Permite crear, visualizar, completar y eliminar tareas meidante una interfaz sencilla conectada a una API REST
 
+
+<img width="1346" height="625" alt="Screenshot 2026-02-11 232026" src="https://github.com/user-attachments/assets/21b1718f-60e8-4e96-8387-5d3921c1936a" />
+
 # Funcionalidades
 - Crear tareas con título y descripción opcional.
 - Marcar tareas como completadas
 - Eliminación con modal de confirmación
 - Interfaz sencilla y dinámica
+<img width="598" height="345" alt="Screenshot 2026-02-11 232154" src="https://github.com/user-attachments/assets/6fa910cb-91f5-472b-9ba7-22698067aa2f" />
 
 # Tecnologías utilizadas
 Frontend
