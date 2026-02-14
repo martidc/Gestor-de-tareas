@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:5000/api/tareas';
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000/api/tareas'
+    : `${window.location.origin}/api/tareas`;
 let tareaAEliminar = null;
 
 document.addEventListener('DOMContentLoaded', () => {
