@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.')); // Sirve archivos estáticos desde la raíz
+app.use(express.static('public'));
 
 // Base de datos en memoria
 let tareas = [];
@@ -48,10 +48,10 @@ app.delete('/api/tareas/:id', (req, res) => {
     tareas = tareas.filter(t => t.id !== id);
     res.json({ mensaje: 'Tarea eliminada' });
 });
-
+ 
 // Ruta principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
 app.listen(PORT, () => {

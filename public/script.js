@@ -1,5 +1,5 @@
 const API_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:5000/api/tareas'
+    ? 'http://localhost:3000/api/tareas'
     : `${window.location.origin}/api/tareas`;
 let tareaAEliminar = null;
 
