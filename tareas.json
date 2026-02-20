@@ -1,0 +1,24 @@
+{
+  "tareas": [
+    {
+      "id": 6,
+      "titulo": "Lasaña",
+      "descripcion": "",
+      "completada": false,
+      "subtareas": [
+        {
+          "id": 7,
+          "titulo": "comprar verduras",
+          "completada": false
+        },
+        {
+          "id": 8,
+          "titulo": "lavar platos",
+          "completada": false
+        }
+      ]
+    }
+  ],
+  "contadorId": 7,
+  "contadorSubId": 9
+}

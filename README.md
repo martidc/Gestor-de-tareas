@@ -1,71 +1,90 @@
-# Gestor de tareas
-Aplicación web full stack para la gestión de tareas, desarrollada con Flask en el backend y JavaScript en el frontend.
+# Gestor de Tareas + Pomodoro
 
-Permite crear, visualizar, completar y eliminar tareas meidante una interfaz sencilla conectada a una API REST
+Una aplicación web para organizar tus tareas con temporizador pomodoro y reproductor de música integrado. 
+Disponible en modo claro y oscuro.
 
-<img width="1326" height="615" alt="Screenshot 2026-02-12 000641" src="https://github.com/user-attachments/assets/b67c9403-4e52-4ee2-9216-a8258b23ac17" />
+## Demo
+https://martidc.github.io/materias-apu/
 
-# Funcionalidades
-- Crear tareas con título y descripción opcional.
-- Marcar tareas como completadas
-- Eliminación con modal de confirmación
-- Interfaz sencilla y dinámica
-<img width="598" height="345" alt="Screenshot 2026-02-11 232154" src="https://github.com/user-attachments/assets/6fa910cb-91f5-472b-9ba7-22698067aa2f" />
 
-# Tecnologías utilizadas
-Frontend
+## Funcionalidades
+
+### Tareas
+- Crea tareas con nombre y descripción opcional.
+- Expande cada tarea para agregar subtareas.
+- Marca subtareas como completadas o eliminalas con un clic.
+
+### Pomodoro
+- Temporizador configurable de trabajo y descanso.
+- Controlable desde un modal o desde la barra inferior.
+- Alertas de sonido al terminar cada sesión.
+
+### Música
+- Reproductor integrado en la barra inferior.
+- Reproducir, pausar, cambiar canción y ajustar volumen.
+- Muestra el nombre de la canción en curso.
+
+### Tema
+- Alternancia entre modo claro y oscuro.
+
+
+## Estructura del Proyecto
+```
+GESTOR-DE-TAREAS/
+├── index.html
+├── server.js               # Servidor Node.js
+├── package.json
+├── README.md
+└── public/
+    ├── js/
+    │   ├── api.js          # Comunicación con el backend
+    │   ├── app.js          # Punto de entrada principal de JS
+    │   ├── musica.js       # Lógica del reproductor de música
+    │   ├── pomodoro.js     # Lógica del temporizador Pomodoro
+    │   ├── tareas.js       # Gestión de tareas
+    │   └── ui.js           # Manipulación de la interfaz
+    ├── media/
+    │   ├── music/          # Canciones del reproductor
+    │   ├── cafecito-logo.svg
+    │   ├── github-logo.svg
+    │   ├── vacio.gif
+    │   ├── fin-descanso.mp3
+    │   └── fin-trabajo.mp3
+    └── styles/
+        ├── base.css        # Estilos globales
+        ├── layout.css      # Estructura y disposición
+        ├── components.css  # Componentes reutilizables
+        ├── musica.css      # Estilos del reproductor
+        ├── pomodoro.css    # Estilos del Pomodoro
+        ├── tareas.css      # Estilos de las tareas
+        └── ui.css          # Estilos generales de UI
+```
+
+---
+
+## ¿Cómo usar?
+
+1. Clona el repositorio:
+```bash
+   git clone https://github.com/martidc/gestor-de-tareas.git
+```
+2. Instala las dependencias:
+```bash
+   npm install
+```
+3. Inicia el servidor:
+```bash
+   node server.js
+```
+4. Abri el navegador en `http://localhost:3000` (o el puerto que uses).
+
+
+## Tecnologías
+
 - HTML5
-- CSS3
-- JavaScript (DOM + Fetch API)
-Backend
-- Python 3
-- Flask
-- Flask-CORS
-  
-# Estructura del proyecto
+- CSS3 (modular)
+- JavaScript Vanilla
+- Node.js
 
-```bash
-gestor-tareas/
-│
-├── index.html        # Interfaz principal
-├── styles.css        # Estilos y diseño responsive
-├── script.js         # Lógica frontend + consumo de API
-└── app.py            # Servidor Flask + API REST
-```
 
-# Ejecución local
-
-Para correr este proyecto en tu computadora, seguí estos pasos:
-
-1. Cloná el repositorio
-
-```bash
-git clone https://github.com/tu-usuario/gestor-tareas.git
-cd gestor-tareas
-```
-2. Instalá las dependencias:
-```bash
-pip install -r requirements.txt
-```
-
-3. Corré la app:
-```bash
-python app.py
-```
-
-4. Abrí tu navegador en: `http://localhost:5000`
-   
-# Notas
-- Las tareas se almacenan en la memoria, por lo que se reinician al cerrar el servidor.
-
-# Posibles mejoras a futuro
-- Guardar las tareas en una base de datos
-- Agregar filtros de estado (pendiente/en progreso/finalizado)
-- Agregar filtros de urgencia (Urgente/para el día/para la semana)
-- Mejoras de accesibilidad y diseño
-- Subdivisión de tareas
-
-# Autora
-Martina de la Camara
-
-Estudiante y desarrolladora full stack en formación
+Desarrollado por martidc 

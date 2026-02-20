@@ -4,65 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Tareas</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
-</head>
+
+    <!-- css -->
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/tareas.css">
+    <link rel="stylesheet" href="styles/ui.css">
+    <link rel="stylesheet" href="styles/pomodoro.css">
+    <link rel="stylesheet" href="styles/musica.css">
+
+    <!-- iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@9/font/simple-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display&display=swap" rel="stylesheet">
 
 <body>
     <div class="container">
+
         <header>
             <div class="title-container">
-            <h1>Gestor de tareas</h1>
-            <p class="subtitle" id="fecha-actual"></p>
-            </div> 
+                <h1>Gestor de tareas</h1>
+                <div class="header-meta">
+                    <p class="subtitle" id="fecha-actual"></p>
+                    <span class="subtitle-sep">·</span>
+                    <p class="subtitle" id="hora-actual"></p>
+                    <span class="subtitle-sep">·</span>
+                    <p class="subtitle saludo" id="saludo-actual"></p>
+                </div>
+
+                <!-- Botón dark mode -->
+                <div class="header-actions">
+                    <button class="btn-dark-mode" onclick="toggleDarkMode()" title="Cambiar tema">
+                        <span class="material-symbols-outlined">moon_stars</span>                    
+                    </button>
+                </div>
+            </div>
         </header>
 
-<!-- Cajita de alerta -->
-<div id="alert-box" class="alert">
-    <span class="closebtn" onclick="this.parentElement.classList.remove('show')">&times;</span>
-    <span id="alert-message"></span>
-</div>
-
-<!-- Cajita de confirmación -->
-<div id="modal-confirmacion" class="modal">
-    <div class="modal-content">
-        <h3>¿Seguro?</h3>
-        <p>Esta acción eliminará la tarea permanentemente.</p>
-        <div class="modal-buttons">
-            <button class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
-            <button class="btn btn-danger" id="confirmar-eliminar">Eliminar</button>
+        <!-- alerta -->
+        <div id="alert-box" class="alert">
+            <span id="alert-message"></span>
+            <span class="closebtn" onclick="this.parentElement.classList.remove('show')">
+                &times;
+            </span>
         </div>
-    </div>
-</div>
 
-<div class="postits-container">
-    <!-- Añadir tareas -->
-    <div class="form-container">
-        <h2>Nueva tarea</h2>
-        <form id="formulario-tarea">
-            <input 
-                type="text" 
-                id="titulo" 
-                placeholder="Nombre de la tarea" 
-            >
-            <textarea 
-                id="descripcion" 
-                placeholder="Descripción (opcional)" 
-                rows="3"
-            ></textarea>
-            <button type="submit" class="btn btn-primary">
-                Añadir tarea
-            </button>
-        </form>
-    </div>
+        <!-- confirmación -->
+        <div id="modal-confirmacion" class="modal">
+            <div class="modal-content">
+                <h3>¿Seguro?</h3>
+                <p>Esta acción eliminará la tarea permanentemente.</p>
 
-<div class="form-container">
-    <h2>Mis tareas</h2>
-    <div id="lista-tareas">
-    </div>
-</div>
+                <div class="modal-buttons">
+                    <button class="btn btn-secondary"
+                            onclick="cerrarModal()">
+                        Cancelar
+                    </button>
 
-<script src="script.js"></script>
-</body>
+                    <button class="btn btn-danger"
+                            id="confirmar-eliminar">
+                        Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal pomodoro -->
+        <div id="modal-pomodoro" class="modal">
+            <div class="modal-content modal-pomodoro">
+
+                <button class="btn-cerrar-modal" onclick="cerrarPomodoro()">
+                    &minus;
+                </button>
+                <h3>Pomodoro</h3>
+
+                <!-- tiempos personalizables -->
+                <div class="pomodoro-config">
+                    <label>Trabajo (min)
+                        <input type="number" id="input-minutos" min="1" max="99" value="25">
+                    </label>
+                    <label>Descanso (min)
+                        <input type="number" id="input-minutos-descanso" min="1" max="99" value="5">
+                    </label>
+                    <button class="btn btn-secondary btn-aplicar" onclick="aplicarTiempo()">Aplicar</button>
+                </div>
+
+                <!-- controles + silencio -->
+                <div class="pomodoro-footer">
+                    <button class="barra-btn" onclick="toggleSilencio()">
+                        <span id="icono-silencio" class="material-symbols-outlined">volume_up</span>
+                    </button>
+                    <div class="pomodoro-controles">
+                        <button class="btn btn-secondary" onclick="resetTimer()">Reiniciar</button>
+                        <button class="btn btn-primary" id="btn-iniciar" onclick="toggleTimer()">Iniciar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="postits-container">
+
+            <!-- añadir tareas -->
+            <div class="form-container">
+                <h2>Tarea</h2>
+
+                <form id="formulario-tarea">
+                    <input
+                        type="text"
+                        id="titulo"
+                        placeholder="Nombre de la tarea"
+                    >
+
+                    <textarea
+                        id="descripcion"
+                        placeholder="Descripción (opcional)"
+                        rows="3"
+                    ></textarea>
+
+                    <button type="submit" class="btn btn-primary">
+                        Añadir tarea
+                    </button>
+                </form>
+                
+                <!-- botón pomodoro -->
+                <button class="btn btn-secondary btn-pomodoro" onclick="abrirPomodoro()">
+                    <span class="material-symbols-outlined">clock_loader_20</span> Pomodoro
+                </button>
+            </div>
+
+            <!-- lista -->
+            <div class="form-container container-tareas">
+                <h2>Mis tareas</h2>
+                <div id="lista-tareas"></div>
+            </div>
+
+        </div>
+
+        <!-- barra inferior -->
+        <div class="barra-inferior">
+
+            <!-- pomodoro mini -->
+            <div class="barra-pomodoro">
+                <span id="barra-tiempo">25:00</span>
+                <span id="barra-modo">Tiempo de trabajo</span>
+                <button class="barra-btn" onclick="toggleTimer()">
+                    <span id="barra-icono-timer" class="material-symbols-outlined">play_arrow</span>
+                </button>
+            </div>
+
+            <div class="barra-separador"></div>
+
+            <!-- música -->
+            <div class="barra-musica">
+                <button class="barra-btn" onclick="anteriorCancion()">
+                    <span class="material-symbols-outlined">fast_rewind</span>
+                </button>
+                <button class="barra-btn" onclick="toggleMusica()">
+                    <span id="btn-play-musica" class="material-symbols-outlined">play_arrow</span>
+                </button>
+                <button class="barra-btn" onclick="siguienteCancion()">
+                    <span class="material-symbols-outlined">fast_forward</span>            
+                </button>
+                <span id="musica-titulo" class="musica-titulo">Minecraft — saddyowner, TanookiAlex</span>
+                <input type="range" id="barra-progreso-musica" min="0" max="100" value="0"
+                    oninput="buscarEnCancion(this.value)" class="barra-progreso">
+                <span id="musica-tiempo" class="musica-tiempo">00:00 / 00:00</span>
+                <div class="barra-volumen">
+                    <span class="material-symbols-outlined">volume_down</span>
+                    <input type="range" id="control-volumen" min="0" max="100" value="50"
+                        oninput="cambiarVolumen(this.value)">
+                    <span class="material-symbols-outlined">volume_up</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- botón cómo funciona -->
+        <button class="btn-howto" onclick="abrirHowTo()" title="¿Cómo funciona?">?</button>
+
+        <!-- modal cómo funciona -->
+        <div id="modal-howto" class="modal">
+            <div class="modal-content modal-howto">
+                <button class="btn-cerrar-modal" onclick="cerrarHowTo()">&minus;</button>
+                <h3>¿Cómo funciona?</h3>
+
+                <div class="howto-secciones">
+                    <div class="howto-item">
+                        <div>
+                            <strong>Tareas</strong>
+                            <p>Escribí el nombre de la tarea, su descripción (opcional) y hacé clic en <em>Añadir tarea</em>. Podés expandir cada tarea para agregar subtareas, marcarlas como completadas o eliminarlas.</p>
+                        </div>
+                    </div>
+                    <div class="howto-item">
+                        <div>
+                            <strong>Pomodoro</strong>
+                            <p>Abrí el temporizador con el botón verde. Configurá los minutos de trabajo y descanso, y presioná <em>Iniciar</em> para arrancar. También podés controlarlo desde la barra inferior.</p>
+                        </div>
+                    </div>
+                    <div class="howto-item">
+                        <div>
+                            <strong>Música</strong>
+                            <p>Usá los controles de la barra inferior para reproducir, pausar, cambiar canción y ajustar el volumen mientras trabajás.</p>
+                        </div>
+                    </div>
+                    <div class="howto-item">
+                        <div>
+                            <strong>Tema</strong>
+                            <p>Cambiá entre modo claro y oscuro con el botón de la esquina superior derecha.</p>
+                        </div>
+                    </div>
+
+                    <div class="howto-footer">
+                        <a href="https://github.com/martidc/" target="_blank" class="howto-social-btn" title="GitHub">
+                            <img src="media/github-logo.svg" alt="Github" class="github">                           
+                        </a>
+                        <a href="https://cafecito.app/martidc"
+                        target="_blank"
+                        class="howto-social-btn">
+                            <img src="media/cafecito-logo.svg" alt="Cafecito">
+                        </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- js -->
+        <script type="module" src="js/app.js"></script>
+    </body>
 </html>
-

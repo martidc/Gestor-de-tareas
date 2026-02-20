@@ -5,16 +5,15 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// Base de datos en memoria
 let tareas = [];
 let contadorId = 1;
+let contadorSubId = 1;
 
-// Rutas API
+// tareas
 app.get('/api/tareas', (req, res) => {
     res.json(tareas);
 });
@@ -25,7 +24,8 @@ app.post('/api/tareas', (req, res) => {
         id: contadorId++,
         titulo,
         descripcion,
-        completada: false
+        completada: false,
+        subtareas: []
     };
     tareas.push(nuevaTarea);
     res.status(201).json(nuevaTarea);
@@ -48,10 +48,45 @@ app.delete('/api/tareas/:id', (req, res) => {
     tareas = tareas.filter(t => t.id !== id);
     res.json({ mensaje: 'Tarea eliminada' });
 });
- 
-// Ruta principal
+
+// subtareas
+app.post('/api/tareas/:id/subtareas', (req, res) => {
+    const id = parseInt(req.params.id);
+    const tarea = tareas.find(t => t.id === id);
+
+    if (!tarea) return res.status(404).json({ error: 'Tarea no encontrada' });
+
+    const nuevaSub = {
+        id: contadorSubId++,
+        titulo: req.body.titulo,
+        completada: false
+    };
+    tarea.subtareas.push(nuevaSub);
+    res.status(201).json(nuevaSub);
+});
+
+app.put('/api/tareas/:id/subtareas/:subId', (req, res) => {
+    const tarea = tareas.find(t => t.id === parseInt(req.params.id));
+    if (!tarea) return res.status(404).json({ error: 'Tarea no encontrada' });
+
+    const sub = tarea.subtareas.find(s => s.id === parseInt(req.params.subId));
+    if (!sub) return res.status(404).json({ error: 'Subtarea no encontrada' });
+
+    sub.completada = req.body.completada;
+    res.json(sub);
+});
+
+app.delete('/api/tareas/:id/subtareas/:subId', (req, res) => {
+    const tarea = tareas.find(t => t.id === parseInt(req.params.id));
+    if (!tarea) return res.status(404).json({ error: 'Tarea no encontrada' });
+
+    tarea.subtareas = tarea.subtareas.filter(s => s.id !== parseInt(req.params.subId));
+    res.json({ mensaje: 'Subtarea eliminada' });
+});
+
+//ruta principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'public','index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
