@@ -44,8 +44,8 @@ export function renderSubtarea(tareaId, sub) {
                ${sub.completada ? "checked" : ""}
                onchange="toggleSubtarea(${tareaId}, ${sub.id}, this.checked)">
         <span class="subtarea-titulo">${sub.titulo}</span>
-        <button class="btn-delete-sub" onclick="eliminarSubtarea(${tareaId}, ${sub.id})">
-            <i class="fa fa-times"></i>
+        <button class="btn-delete-sub" onclick="eliminarSubtarea(${tareaId}, ${sub.id})" title="Eliminar subtarea">
+            <span class="material-symbols-outlined">delete</span>
         </button>
     </div>`;
 }
