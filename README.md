@@ -52,15 +52,8 @@ GESTOR-DE-TAREAS/
 ```bash
    git clone https://github.com/martidc/gestor-de-tareas.git
 ```
-2. Instala las dependencias:
-```bash
-   npm install
-```
-3. Inicia el servidor:
-```bash
-   node server.js
-```
-4. Abri el navegador en `http://localhost:3000` (o el puerto que uses).
+2. Abri `index.html` en tu navegador o visitá la demo en línea:
+   https://martidc.github.io/gestor-de-tareas
 
 
 ## Tecnologías
