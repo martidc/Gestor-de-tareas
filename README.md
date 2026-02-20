@@ -61,7 +61,6 @@ GESTOR-DE-TAREAS/
 - HTML5
 - CSS3 (modular)
 - JavaScript Vanilla
-- Node.js
 
 ##
 Desarrollado por martidc 
