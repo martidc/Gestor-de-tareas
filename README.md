@@ -1,11 +1,13 @@
 # Gestor de Tareas + Pomodoro
 
 Una aplicación web para organizar tus tareas con temporizador pomodoro y reproductor de música integrado. 
-Disponible en modo claro y oscuro.
+Disponible para móvil en claro y oscuro.
 
 ## Demo
-https://martidc.github.io/materias-apu/
+[ya me fijo]
 
+<img width="1359" height="629" alt="Screenshot 2026-02-19 222308" src="https://github.com/user-attachments/assets/a25e861c-167e-43a4-8cd8-85ef0a45f002" />
+<img width="1359" height="626" alt="Screenshot 2026-02-19 221707" src="https://github.com/user-attachments/assets/141f442e-11ad-4e6b-bb3d-7b13b15412a8" />
 
 ## Funcionalidades
 
@@ -18,6 +20,7 @@ https://martidc.github.io/materias-apu/
 - Temporizador configurable de trabajo y descanso.
 - Controlable desde un modal o desde la barra inferior.
 - Alertas de sonido al terminar cada sesión.
+  
 
 ### Música
 - Reproductor integrado en la barra inferior.
@@ -27,6 +30,7 @@ https://martidc.github.io/materias-apu/
 ### Tema
 - Alternancia entre modo claro y oscuro.
 
+<img width="275" height="494" alt="Screenshot 2026-02-19 222428" src="https://github.com/user-attachments/assets/1b73872e-6724-49be-8c79-e018e1757dae" />
 
 ## Estructura del Proyecto
 ```
@@ -61,6 +65,8 @@ GESTOR-DE-TAREAS/
 ```
 
 ---
+<img width="1359" height="629" alt="Screenshot 2026-02-19 221758" src="https://github.com/user-attachments/assets/ab66c664-da63-438c-ac85-ef45026cd47e" />
+
 
 ## ¿Cómo usar?
 
@@ -86,5 +92,5 @@ GESTOR-DE-TAREAS/
 - JavaScript Vanilla
 - Node.js
 
-
+##
 Desarrollado por martidc 
