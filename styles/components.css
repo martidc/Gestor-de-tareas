@@ -1,0 +1,171 @@
+/* ───────── form ───────── */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input[type="text"],
+textarea {
+    padding: 12px 16px;
+    border: 2px solid #F5E8D8;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-family: 'Funnel Display', sans-serif;
+    font-weight: 500;
+    color: #3D3553;
+    background: #faf7f4;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: #AFA8BF;
+    font-weight: 400;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #e7a3b2;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+html.dark input[type="text"],
+html.dark textarea {
+    border-color: #3d3560;
+    color: #e8e0f0;
+    background: #2a2440;
+}
+
+html.dark input[type="text"]::placeholder,
+html.dark textarea::placeholder {
+    color: #6b6080;
+}
+
+/* ───────── cards ───────── */
+
+.card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 24px #3d35530f;
+    transition: all 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px #3d35531a;
+}
+
+html.dark .card {
+    background: #231e32;
+}
+
+/* ───────── botones ───────── */
+
+.btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-family: 'Funnel Display', sans-serif;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 6px 14px #00000014;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px #0000001f;
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px #00000014;
+}
+
+.btn-primary {
+    background: #e76f8a;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #4e9d7b;
+    color: #ffffff;
+}
+
+.btn-danger {
+    background: #d9845e;
+    color: #ffffff;
+}
+
+.btn .material-symbols-outlined {
+    font-size: 16px;
+}
+
+/* ───────── animaciones ───────── */
+
+.task-item {
+    animation: taskEnter 0.35s ease forwards;
+}
+
+@keyframes taskEnter {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-completed {
+    opacity: 0.6;
+    transform: scale(0.98);
+    text-decoration: line-through;
+    transition: all 0.25s ease;
+}
+
+.empty-illustration {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-6px); }
+}
+
+/* ───────── boton dark mode ───────── */
+
+.btn-dark-mode {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7A6E8A;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-dark-mode:hover {
+    background: #F5E8D8;
+    color: #3D3553;
+}
+
+html.dark .btn-dark-mode {
+    color: #a89cc0;
+}
+
+html.dark .btn-dark-mode:hover {
+    background: #3d3560;
+    color: #e8e0f0;
+}

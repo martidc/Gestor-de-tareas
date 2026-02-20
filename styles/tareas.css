@@ -1,0 +1,346 @@
+#lista-tareas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ── tarea ── */
+.tarea-card {
+    background: #f5e8d6b9;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.2s;
+    border: 1.5px solid #F5E8D8;
+}
+
+.tarea-card:hover {
+    box-shadow: 0 4px 16px #8b7fc724;
+    transform: translateY(-1px);
+}
+
+.tarea-row {
+    display: flex;
+    align-items: center;
+    padding: 13px 14px;
+    gap: 10px;
+}
+
+/* ── expandir ── */
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #AFA8BF;
+    font-size: 0.8rem;
+    padding: 3px 5px;
+    border-radius: 6px;
+    transition: color 0.2s, transform 0.25s;
+}
+
+.toggle-btn:hover { color: #8B7FC7; }
+
+.toggle-btn.collapsed {
+    transform: rotate(-90deg);
+}
+
+/* ── checkboxes ── */
+.tarea-row input[type="checkbox"],
+.subtarea-row input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #F5E8D8;
+    border-radius: 4px;
+    background: #FFFBFF;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.tarea-row input[type="checkbox"]:checked,
+.subtarea-row input[type="checkbox"]:checked {
+    background: #F4829A;
+    border-color: #F4829A;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 13px;
+}
+
+/* ── info de la tarea ── */
+.tarea-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.tarea-titulo {
+    font-size: 0.95rem;
+    color: #3D3553;
+    font-weight: 600;
+}
+
+.tarea-descripcion {
+    font-size: 0.8rem;
+    color: #AFA8BF;
+    margin-top: 2px;
+}
+
+.tarea-card.completada .tarea-titulo {
+    text-decoration: line-through;
+    color: #AFA8BF;
+}
+
+/* ── botón añadir subtarea ── */
+.btn-add-sub {
+    background: none;
+    border: none;
+    color: #AFA8BF;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px 8px;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+    font-weight: 700;
+}
+
+.btn-add-sub:hover {
+    color: #8B7FC7;
+    background: #EAE8F7;
+}
+
+/* ── botón eliminar tarea ── */
+.btn-delete-tarea {
+    background: #e8b4ae;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: transform 0.15s ease;
+}
+
+.btn-delete-tarea:hover {
+    transform: translateY(-3px);
+}
+
+/* ── subtareas ── */
+.subtareas-container {
+    padding: 0 14px 12px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.subtareas-container.hidden { display: none; }
+
+.subtarea-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: #fcf4e9;
+    border-color: #eeafbd;
+    transition: border-color 0.2s;
+}
+
+.subtarea-row:hover {
+    border-color: #FBCDD8;
+}
+
+.subtarea-titulo {
+    flex: 1;
+    font-size: 0.88rem;
+    color: #7A6E8A;
+    font-weight: 500;
+}
+
+.subtarea-row.completada .subtarea-titulo {
+    text-decoration: line-through;
+    color: #AFA8BF;
+}
+
+.subtarea-count {
+    font-size: 0.8rem;
+    color: #7A6E8A;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-right: 4px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* ── botón eliminar subtarea ── */
+.btn-delete-sub {
+    background: none;
+    border: none;
+    color: #AFA8BF;
+    cursor: pointer;
+    font-size: 0.82rem;
+    padding: 3px 5px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.btn-delete-sub:hover {
+    color: #F4829A;
+    background: #FDE8EE;
+}
+
+/* ── form nueva subtarea ── */
+.add-subtarea-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.add-subtarea-form input {
+    flex: 1;
+    padding: 7px 12px;
+    border: 1.5px solid #F5E8D8;
+    border-radius: 8px;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 0.88rem;
+    background: #FFFFFF;
+    color: #3D3553;
+    transition: border-color 0.2s;
+}
+
+.add-subtarea-form input::placeholder { color: #AFA8BF; }
+
+.add-subtarea-form input:focus {
+    outline: none;
+    border: 1.5px solid #eeafbd;
+}
+
+.add-subtarea-form .btn-agregar-sub {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #7daa8a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.add-subtarea-form .btn-agregar-sub:hover {
+    background: #e8f4ec;
+    color: #5a8a68;
+}
+
+/* ── estado vacío ── */
+.vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 36px 20px;
+    text-align: center;
+    color: #7A6E8A;
+    font-size: 0.9rem;
+}
+
+.gif-vacio {
+    width: 160px;
+    border-radius: 14px;
+    opacity: 0.85;
+}
+
+/* ───────── dark mode ───────── */
+
+html.dark .tarea-card {
+    background: #2e2840;
+    border-color: #3d3560;
+}
+
+html.dark .tarea-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .tarea-titulo {
+    color: #e8e0f0;
+}
+
+html.dark .tarea-descripcion {
+    color: #6b6080;
+}
+
+html.dark .tarea-card.completada .tarea-titulo {
+    color: #6b6080;
+}
+
+html.dark .tarea-row input[type="checkbox"],
+html.dark .subtarea-row input[type="checkbox"] {
+    background: #2a2440;
+    border-color: #4a4268;
+}
+
+html.dark .subtarea-row {
+    background: #231e32;
+    border-color: #4a4268;
+}
+
+html.dark .subtarea-titulo {
+    color: #a89cc0;
+}
+
+html.dark .subtarea-row.completada .subtarea-titulo {
+    color: #6b6080;
+}
+
+html.dark .subtarea-count {
+    color: #a89cc0;
+}
+
+html.dark .add-subtarea-form input {
+    background: #2a2440;
+    border-color: #4a4268;
+    color: #e8e0f0;
+}
+
+html.dark .add-subtarea-form input::placeholder {
+    color: #6b6080;
+}
+
+html.dark .add-subtarea-form input:focus {
+    border-color: #e7a3b2;
+}
+
+html.dark .btn-add-sub:hover {
+    background: #2e2840;
+}
+
+html.dark .btn-delete-sub:hover {
+    background: #3a1a22;
+}
+
+html.dark .vacio {
+    color: #a89cc0;
+}
+
+/* ───────── para celu ───────── */
+@media (max-width: 600px) {
+    .tarea-row { padding: 10px; gap: 7px; }
+    .subtareas-container { padding: 0 10px 10px 32px; }
+    .btn-delete-tarea { width: 28px; height: 28px; }
+}
+
+html.dark .tarea-row input[type="checkbox"]:checked,
+html.dark .subtarea-row input[type="checkbox"]:checked {
+    background-color: #F4829A;
+    border-color: #F4829A;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 13px;
+}
