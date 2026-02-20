@@ -4,7 +4,7 @@ Una aplicación web para organizar tus tareas con temporizador pomodoro y reprod
 Disponible para móvil en claro y oscuro.
 
 ## Demo
-https://gestor-de-tareas-6ayu.onrender.com/
+https://martidc.github.io/gestor-de-tareas/
 
 <img width="1359" height="629" alt="Screenshot 2026-02-19 222308" src="https://github.com/user-attachments/assets/a25e861c-167e-43a4-8cd8-85ef0a45f002" />
 <img width="1359" height="626" alt="Screenshot 2026-02-19 221707" src="https://github.com/user-attachments/assets/141f442e-11ad-4e6b-bb3d-7b13b15412a8" />
@@ -36,32 +36,10 @@ https://gestor-de-tareas-6ayu.onrender.com/
 ```
 GESTOR-DE-TAREAS/
 ├── index.html
-├── server.js               # Servidor Node.js
-├── package.json
-├── README.md
-└── public/
-    ├── js/
-    │   ├── api.js          # Comunicación con el backend
-    │   ├── app.js          # Punto de entrada principal de JS
-    │   ├── musica.js       # Lógica del reproductor de música
-    │   ├── pomodoro.js     # Lógica del temporizador Pomodoro
-    │   ├── tareas.js       # Gestión de tareas
-    │   └── ui.js           # Manipulación de la interfaz
-    ├── media/
-    │   ├── music/          # Canciones del reproductor
-    │   ├── cafecito-logo.svg
-    │   ├── github-logo.svg
-    │   ├── vacio.gif
-    │   ├── fin-descanso.mp3
-    │   └── fin-trabajo.mp3
-    └── styles/
-        ├── base.css        # Estilos globales
-        ├── layout.css      # Estructura y disposición
-        ├── components.css  # Componentes reutilizables
-        ├── musica.css      # Estilos del reproductor
-        ├── pomodoro.css    # Estilos del Pomodoro
-        ├── tareas.css      # Estilos de las tareas
-        └── ui.css          # Estilos generales de UI
+├── js/
+├── styles/
+├── media/
+└── README.md
 ```
 
 ---
